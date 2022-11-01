@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>object</title>
+</head>
+<body>
+    <script>
+    //创建javascript对象
+    let school={
+        name:"泉州信息工程学院",
+        findName:function(){
+
+            return name;
+        }
+
+    }
+    //获取数据
+    let json={
+         "name":"州信息工程学院",
+         "address":["泉信校区","江南校区"]
+    }
+    let {name="",findName}=school;
+    console.log(findName());
+
+   let {address}=json;
+   console.log(address);
+
+
+    </script>
+</body>
+</html>

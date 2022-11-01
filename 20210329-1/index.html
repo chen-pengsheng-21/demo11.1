@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <my-component></my-component>
+        <my-component1></my-component1>
+        <com2></com2>
+        <my-com1></my-com1>
+        <my-parent :name="msg"></my-parent>
+    </div>
+
+    <template id="temp1">
+        <p>{{title}}</p>
+    </template>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+//全局组件my-component
+//子组件的data是方法，返回数据用return
+
+Vue.component('my-component',{
+    data(){
+        return{
+            count:0
+        }
+    },
+    template:'<button v-on:click="count++">被单击{{count}}</button>'
+})
+Vue.component('my-com1',{
+    template:'#temp1',
+    data(){
+        return {
+            title:'我是组件内的title'
+        }
+    }
+
+})
+Vue.component('my-parent',{
+    props:{
+        name:{
+            type:String,
+            required:true
+        }
+    },
+    template:'<div>我是父组件的{{name}}</div>'
+
+})
+let com1={
+    template:'<h3>实例的局部组件1</h3>'
+}
+let com2={
+    template:'<h3>实例的局部组件2</h3>'
+}
+
+let app=new Vue({
+
+    el:"#app",
+    data:{
+        msg:'abc'
+
+    },
+    components:{
+        //局部注册
+        myComponent1:com1,
+        com2:com2
+    }
+})
+
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+         let p=new Promise(function(resolve,reject){
+           // resolve("promise 运行成功")
+
+          // reject("promise 运行失败")
+            
+         });
+         console.log(p)
+         p.then(function(data){
+            console.log(data);
+         },function(err){
+            console.log(err);
+         })
+        
+   </script>
+</body>
+</html>

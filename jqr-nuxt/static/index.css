@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.jqr-width-100{
+    width:100%
+}
+.jqr-width-100 .header {
+    width: 100%;
+    background-color: #eee;
+    color: #333;
+    line-height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 60px;
+    border-radius: 5px;
+}
+
+.jqr-width-100 .header-user {
+    display: flex;
+    align-items: center;
+}
+
+.jqr-width-100 .header-user .username {
+    padding-right: 10px;
+}
+
+.jqr-width-100 .header-user .img {
+    height: 30px;
+    width: 30px;
+}
+.school{
+    margin-left: 10px;
+}
+.jqr-main{
+    width: 1200px;
+    margin: 0 auto;
+}
+.el-main{
+    padding: 0;
+}

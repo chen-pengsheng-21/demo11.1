@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+       
+    <div id="app">
+            <!-- 插值 -->
+            {{name}}  
+            <!-- 指令 vue 特殊含义的对象 
+                 v-bind  转化为vue对象
+                 :
+            -->
+            <!-- title是div属性，转化为vue的对象才能使用 -->
+            <div v-bind:title="name" v-bind:alt="name" >
+                点着几秒会显示
+            </div>
+            <!-- 
+                v-if  判断节点是否显示
+                
+                v-show 判断节点是否显示
+            -->
+            <div v-if="seen">
+                 用户登录就能看见
+
+            </div>
+            <div v-show="seen">
+                用户登录就能看见
+
+            </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+      let vm=new Vue({
+         //options 参数
+         el:"#app",//挂载点
+         data:{
+            name:'vue 实例创建成果',
+            seen:true
+
+         },
+         methods: {
+             
+
+         },
+         comments:{
+
+         },
+         filters:{
+
+         }
+
+      })
+      console.log(vm.$data.name)
+    
+    </script>
+</body>
+</html>

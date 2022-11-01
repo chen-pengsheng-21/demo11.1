@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    
+    .show{
+        font-size: 36px;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        {{msg}}
+        <div class="methods">
+            <!-- 
+                    @ v-on 
+                    : v-bind
+                    如何传参数showinfo(data)
+                    @click 方法
+                    @click  表达式 num++
+                -->
+            <button @click="showinfo()"> 请点击</button>
+        </div>
+
+        <div class="computed">
+            <p>总额:{{totalPrice}}</p>
+            <p>单价：{{price}}</p>
+            <p>数量：{{num}}</p>
+            <button @click="num==0?0:num--">-</button>
+            <button @click="num++">+</button>
+        </div>
+        <div class="watch">
+            <input type="text" v-model="num">
+            <div class="show">
+                {{num}}
+            </div>
+        </div>
+        <div class="filters">
+            {{msg|upper}}
+        </div>
+    </div>
+
+
+    <!-- vue环境搭建 
+      1、引入vue库
+      2、创建Vue实例
+    -->
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //javascript对象
+        let app = new Vue({
+            //Vue实例
+            //{options：el，data，methods，computed，watch，filters，components} 
+            el: "#app",
+            data: {
+                msg: "this is vue demo",
+                price: 23,
+                num: 1
+            },
+            methods: {
+                showinfo() {
+                    //this 解决方案
+                    let that = this;
+                    that.msg = "这是vue事件驱动方法";
+                    // console.log(data)
+                }
+            },
+            computed: {
+                //计算属性
+                add() {
+                    return 1 + 2;
+                },
+                totalPrice() {
+                    return this.price * this.num;
+                }
+
+            },
+            watch:{
+                num(n,o){
+                    console.log(n,o)
+                }
+            },
+            filters:{
+                //数据过滤
+                //更改格式：13数字 2021-03-22
+
+                upper(value){
+                    return value.toUpperCase();
+                }
+
+            }
+
+        })
+    </script>
+</body>
+
+</html>

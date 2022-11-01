@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let person={
+            name:"admin",
+            run:function(){
+                console.log("run")
+            }
+
+        }
+        //对象解构赋值
+        let {run1=function(){
+          console.log("run1")
+        },name}=person;
+        console.log(name);
+        run1();
+
+        //数组也是对象
+        let arr=[1,2,3]
+        let {0 : first, [arr.length - 1] : last} =arr;
+        console.log(first);
+        
+    </script>
+</body>
+</html>

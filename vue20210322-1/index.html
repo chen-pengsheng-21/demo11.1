@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- vue挂载点 -->
+    <!-- 浏览器开发者工具
+        快捷键：F12，CTRL+SHIFT+I 
+    -->
+    <div id="app">
+        {{msg}}
+
+        <div class="methods">
+            <!--  @click可以触发方法 
+              @clicl可以是表达式
+              @ v-on
+              : v-bind
+        -->
+            <button type="button" @click="showinfo('a')">请点击</button>
+            {{msg}}
+        </div>
+        <div class="computed">
+            {{add}}
+        </div>
+
+        <div class="order">
+
+            <p>总价：{{totalPrice}}</p>
+            <p>单价：{{price}}</p>
+            <p>数量：{{num}}</p>
+            <p>折扣：{{discount}}</p>
+            <button @click="num++">+</button>
+            <button @click="num==0 ? 0:num--">-</button>
+
+        </div>
+        <div class="watch">
+
+            <input type="text" v-model="num">
+
+        </div>
+        <div class="filter">
+            {{msg|upper}}
+
+        </div>
+
+
+    </div>
+    <!-- 引入vuejs库 -->
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //使用vue
+        //创建vue实例
+        let app = new Vue({
+            //options el,data,methods,computed,watch,filters,components,生命周期
+            el: "#app",
+            data: {
+                msg: "this is vue demo",
+                price: 20, //单价
+                num: 0, //数量
+                discount: 0.5 //折扣
+            },
+            methods: {
+                showinfo(data) {
+                    this.msg = "this is vue  click envent" + data
+                }
+            },
+            computed: {
+                //计算属性
+                add() {
+                    return 1 + 2;
+                },
+                //
+                totalPrice() {
+                    return this.price * this.num * this.discount;
+                }
+            },
+            watch: {
+                num(newNum, oldNum) {
+                    console.log(newNum, oldNum)
+                }
+
+            },
+            filters:{
+                //数据过滤
+                //格式改变
+                upper(value){
+                   return value.toUpperCase();
+                }
+
+            },components:{
+
+                
+            }
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //正常的方法
+        let f = function () {
+            console.log("1")
+        }
+         //无参箭头方法：有返回值
+         let f2=()=>{
+            console.log(this);
+            return 1;
+        }
+        //无参箭头方法：无返回值
+        let f1=()=>{
+            f2();
+            console.log("mmmmmmmmmmmmmmmmmmmmmm");
+            console.log("1")
+        }
+       
+        //一个参数箭头方法：有返回值
+        //一个参数可加可不加()
+        //二个以上必须加（）
+        let f3 =(v)=>v%2===0;
+        console.log(f3(3));
+
+        let f4=function(value){
+            return value%2;
+        }
+        let f5= (a,b)=>a+b
+        [1,2,3].map(v=>v);
+        f1();
+        console.log(this);
+    </script>
+</body>
+
+</html>

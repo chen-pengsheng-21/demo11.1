@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 3、引用组件 -->
+        <my-component :name="msg"></my-component>
+      
+        <my-component1></my-component1>
+        <com2></com2>
+        <com3></com3>
+    </div>
+
+    <template id="tmp1">
+        <p>
+            {{title}}
+        </p>
+    </template>
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        //1|创建全局组件
+        // Vue.component('组件名臣',{组件参数})
+        //子组件的data是方法，有返回值return
+        //创建局部组件
+        let com1 = {
+            template: '<p>这是一个局部组件1</p>'
+        }
+
+        Vue.component('my-component', {
+            props:{
+                name:{
+                    type:String,
+                    required:true
+                }
+            },
+            data() {
+                return {
+                    count: 0
+                }
+            },
+            components: {
+                com1
+            },
+            template: '<p><button @click="count++">组件被点击的次数{{count}},组件名称{{name}}</button><com1></com1></p>'
+
+        })
+
+        let com2 = {
+            template: '<p>这是一个局部组件2</p>'
+        }
+        let com3 = {
+            template: '#tmp1',
+            data() {
+                return {
+                    title: '这是组件的title'
+                }
+            }
+        }
+
+
+        //2、注册，全局组件不要注册
+
+
+        let app = new Vue({
+            el: '#app',
+            data: {
+                msg:123
+            },
+            components: {
+                //注册局部组件
+                myComponent1: com1,
+                com2: com2,
+                com3
+
+            }
+        })
+    </script>
+</body>
+
+</html>
